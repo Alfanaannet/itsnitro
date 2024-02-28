@@ -4,7 +4,3 @@ python-dotenv
 thread
 flask
 requests
-json
-time
-random
-string
