@@ -37,6 +37,7 @@ load_dotenv()
 
 # GOOGLE_AI_KEY = os.getenv("GOOGLE_AI_KEY")
 DISCORD_BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN")
+DEVELOPER_ID = os.getenv("OWNER")
 
 #CUSTOM_PERSONALITY = os.getenv("CUSTOM_PERSONALITY") --- this shit is disgusting asf and booring old skill for custom personality fuck it and fuck you if u enable it (gonna update it soon & set chatbo)
 
@@ -175,7 +176,9 @@ async def on_message(message):
  if message.author == bot.user or message.channel.id == "1212186338129092618" or message.channel.id == "1212184185356292106":
    return
   # Check if the bot is mentioned or the message is a DM
- if bot.user.mentioned_in(message):
+  if isinstance(message.channel, discord.DMChannel) and message.author.id != DEVELOPER_ID:
+      await message.author.send("Sorry, I'm currently not accepting direct messages.")
+   if bot.user.mentioned_in(message):
     #Start Typing to seem like something happened
     # cleaned_text = clean_discord_message(message.content)
 
@@ -290,4 +293,5 @@ def clean_discord_message(input_string):
 
 
 #---------------------------------------------Run Bot-------------------------------------------------
+
 bot.run(DISCORD_BOT_TOKEN)
