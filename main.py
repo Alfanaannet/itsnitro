@@ -173,10 +173,11 @@ async def on_ready():
 @bot.event
 async def on_message(message):
   # Ignore messages sent by the bot
- if message.author == bot.user or message.channel.id == "1212186338129092618" or message.channel.id == "1212184185356292106":
+ if message.author == bot.user or isinstance(message.channel, discord.DMChannel) and message.author.id != DEVELOPER_ID:
+     await message.author.send("Sorry, I'm currently not accepting direct messages.")
    return
   # Check if the bot is mentioned or the message is a DM
-  if isinstance(message.channel, discord.DMChannel) and message.author.id != DEVELOPER_ID:
+  # if isinstance(message.channel, discord.DMChannel) and message.author.id != DEVELOPER_ID:
       await message.author.send("Sorry, I'm currently not accepting direct messages.")
    if bot.user.mentioned_in(message):
     #Start Typing to seem like something happened
