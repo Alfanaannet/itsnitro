@@ -75,7 +75,7 @@ async def on_message(message):
  #   return
   # Check if the bot is mentioned or the message is a DM
    if isinstance(message.channel, discord.DMChannel) and message.author.id != '775012312876711936':
-       await message.author.send("Sorry, I'm currently not accepting direct messages.")
+       await split_and_send_messages(message, "Sorry, I'm currently not accepting direct messages.", 1700)
        return
    if bot.user.mentioned_in(message):
     #Start Typing to seem like something happened
