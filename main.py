@@ -74,7 +74,7 @@ async def on_message(message):
  #    # await message.author.send("Sorry, I'm currently not accepting direct messages.")
  #   return
   # Check if the bot is mentioned or the message is a DM
-   if isinstance(message.channel, discord.DMChannel) and message.author.id != DEVELOPER_ID:
+   if isinstance(message.channel, discord.DMChannel) and message.author.id != '775012312876711936':
        await message.author.send("Sorry, I'm currently not accepting direct messages.")
        return
    if bot.user.mentioned_in(message):
