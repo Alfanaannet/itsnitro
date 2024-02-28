@@ -174,11 +174,13 @@ async def on_ready():
 async def on_message(message):
   # Ignore messages sent by the bot
  if message.author == bot.user or isinstance(message.channel, discord.DMChannel) and message.author.id != DEVELOPER_ID:
-     await message.author.send("Sorry, I'm currently not accepting direct messages.")
    return
+ # if isinstance(message.channel, discord.DMChannel) and message.author.id != DEVELOPER_ID:
+ #    # await message.author.send("Sorry, I'm currently not accepting direct messages.")
+ #   return
   # Check if the bot is mentioned or the message is a DM
   # if isinstance(message.channel, discord.DMChannel) and message.author.id != DEVELOPER_ID:
-      await message.author.send("Sorry, I'm currently not accepting direct messages.")
+      # await message.author.send("Sorry, I'm currently not accepting direct messages.")
    if bot.user.mentioned_in(message):
     #Start Typing to seem like something happened
     # cleaned_text = clean_discord_message(message.content)
