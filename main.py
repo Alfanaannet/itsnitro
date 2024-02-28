@@ -80,7 +80,7 @@ async def on_message(message):
    # if :
       
    #    return
-   if bot.user.mentioned_in(message):
+  if bot.user.mentioned_in(message):
     #Start Typing to seem like something happened
     # cleaned_text = clean_discord_message(message.content)
 
