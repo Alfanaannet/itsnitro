@@ -172,7 +172,7 @@ async def on_ready():
 @bot.event
 async def on_message(message):
   # Ignore messages sent by the bot
- if message.author == bot.user or message.author == "1208929204020715581":
+ if message.author == bot.user or message.channel.id == "1212186338129092618" or message.channel.id == "1212184185356292106":
    return
   # Check if the bot is mentioned or the message is a DM
  if bot.user.mentioned_in(message):
