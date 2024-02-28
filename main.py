@@ -64,123 +64,19 @@ async def on_ready():
   keep_alive()
   await bot.change_presence(status=discord.Status.idle, activity=discord.Game(name="・💻┆ITS COMMUNITY"))
 
-# Function to generate response based on custom personality prompts
-
-
-# @bot.hybrid_command(name="getnitro", description="Nitro For Free By Elfanaan")
-# async def reset(ctx):
-#   # print(ctx.channel)
-#   async with ctx.channel.typing():
-#     # Check for image attachments
-#     if __name__ == "__main__":
-#       url = 'https://api.discord.gx.games/v1/direct-fulfillment'
-#       headers = {
-#           'authority': 'api.discord.gx.games',
-#           'accept': '*/*',
-#           'accept-language': 'en-US,en;q=0.9',
-#           'content-type': 'application/json',
-#           'origin': 'https://www.opera.com',
-#           'referer': 'https://www.opera.com/',
-#           'sec-ch-ua': '"Opera GX";v="105", "Chromium";v="119", "Not?A_Brand";v="24"',
-#           'sec-ch-ua-mobile': '?0',
-#           'sec-ch-ua-platform': '"Windows"',
-#           'sec-fetch-dest': 'empty',
-#           'sec-fetch-mode': 'cors',
-#           'sec-fetch-site': 'cross-site',
-#           'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 OPR/105.0.0.0'
-#       }
-
-#       data = {
-#           'partnerUserId': generate_random_string(64)
-#       }
-
-#       session = requests.Session()
-
-#       response = session.post(url, headers=headers, json=data)
-#       if response.status_code == 200:
-#         _token = response.json().get('token')
-#         if _token is not None:
-#             # Proceed with using the token
-#           # print(f"Token: {_token}")
-#           # await ctx.add_reaction("💵")
-#           response_text = f'https://discord.com/billing/partner-promotions/1180231712274387115/{_token}\n'
-#           await ctx.send(response_text)
-#           line ='https://media.discordapp.net/attachments/1072156951049408532/1072632717298114600/standKJrd.gif?ex=65f0cb90&is=65de5690&hm=1088ff9d1b757bd0722df304&'
-#           await ctx.send(line)
-#         # with open('codes.txt', 'a') as file:
-#         #     file.write(f"https://discord.com/billing/partner-promotions/1180231712274387115/{token}\n")
-#         # print("Token saved to codes.txt file.\n\n")
-#         # print(f"https://discord.com/billing/partner-promotions/1180231712274387115/{token}\n")
-#       else:
-#         eror = 'ERROR FOR GET NITRO'
-#         await ctx.send(eror)
-#         # print(f"Request failed with status code {response.status_code}.")
-#         # print(f"Error message: {response.text}")
-
-#               #Split the Message so discord does not get upset
-#     # await split_and_send_messages(message, response_text, 1700)
-#     return
-#   # await ctx.send("🤖 Bot message history has been cleared.")
-
-
-# def create_chatbot_channels_file():
-#   if not os.path.exists('chatbot_channels.json'):
-#     with open('chatbot_channels.json', 'w') as file:
-#       json.dump({}, file)
-
-
-# create_chatbot_channels_file()
-
-# chatbot_channels_file = 'chatbot_channels.json'
-# chatbot_channels = {}
-
-# Load chatbot channels from chatbot_channels.json if it exists
-# if os.path.exists(chatbot_channels_file):
-#   with open(chatbot_channels_file, 'r') as file:
-#     chatbot_channels = json.load(file)
-
-
-# Command to set or toggle chatbot channel
-# @bot.hybrid_command(name="set_chatbot",
-#                     description="Set or toggle chatbot channel")
-# async def set_chatbot(ctx, channel: discord.TextChannel):
-#   if ctx.guild is None:
-#     await ctx.send("This command can only be used in a server.")
-#     return
-
-#   guild_id = str(ctx.guild.id)
-
-#   with open(chatbot_channels_file, 'r') as file:
-#     chatbot_channels = json.load(file)
-
-#   if guild_id in chatbot_channels:
-#     if chatbot_channels[guild_id]['channel_id'] == str(channel.id):
-#       del chatbot_channels[guild_id]
-#       await ctx.send(
-#           f"Chatbot responses have been toggled off for #{channel.name}.")
-#     else:
-#       chatbot_channels[guild_id] = {'channel_id': str(channel.id)}
-#       await ctx.send(f"Chatbot responses have been set for #{channel.name}.")
-#   else:
-#     chatbot_channels[guild_id] = {'channel_id': str(channel.id)}
-#     await ctx.send(f"Chatbot responses have been set for #{channel.name}.")
-
-#   with open(chatbot_channels_file, 'w') as file:
-#     json.dump(chatbot_channels, file, indent=4)
-
-
 # Event handler for new messages
 @bot.event
 async def on_message(message):
   # Ignore messages sent by the bot
- if message.author == bot.user and message.author.id != DEVELOPER_ID:
-   return
+  # if message.author == bot.user and message.author.id != DEVELOPER_ID:
+  #   return
  # if isinstance(message.channel, discord.DMChannel) and message.author.id != DEVELOPER_ID:
  #    # await message.author.send("Sorry, I'm currently not accepting direct messages.")
  #   return
   # Check if the bot is mentioned or the message is a DM
-  # if isinstance(message.channel, discord.DMChannel) and message.author.id != DEVELOPER_ID:
-      # await message.author.send("Sorry, I'm currently not accepting direct messages.")
+   if isinstance(message.channel, discord.DMChannel) and message.author.id != DEVELOPER_ID:
+       await message.author.send("Sorry, I'm currently not accepting direct messages.")
+       return
    if bot.user.mentioned_in(message):
     #Start Typing to seem like something happened
     # cleaned_text = clean_discord_message(message.content)
