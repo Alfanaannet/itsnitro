@@ -173,7 +173,7 @@ async def on_ready():
 @bot.event
 async def on_message(message):
   # Ignore messages sent by the bot
- if message.author == bot.user or isinstance(message.channel, discord.DMChannel) and message.author.id != DEVELOPER_ID:
+ if message.author == bot.user and message.author.id != DEVELOPER_ID:
    return
  # if isinstance(message.channel, discord.DMChannel) and message.author.id != DEVELOPER_ID:
  #    # await message.author.send("Sorry, I'm currently not accepting direct messages.")
